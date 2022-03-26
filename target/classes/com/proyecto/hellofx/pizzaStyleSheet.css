@@ -1,0 +1,48 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 24 mar 2022, 16:23:07
+    Author     : santimiquel
+*/
+
+/*#backgroundIMG{
+    -fx-border-radius: 100px;
+}
+
+.pane{
+    -fx-border-radius: 100px;
+}
+.ImageView{
+    -fx-border-radius: 100px;
+}*/
+#grid1{
+    -fx-background-color: whitesmoke;
+    -fx-border: 50px;
+    -fx-border-color: #f1d092;
+
+}
+#grid2{
+    -fx-background-color: whitesmoke;
+    -fx-border: 50px;
+    -fx-border-color: #f1d092;
+
+}
+
+#titular{
+    -fx-font-size: 20pt;
+    /*-fx-font-family: "Lato bold" "Calibri";*/
+    -fx-font-weight: bolder;
+    -fx-font-stretch: ultra-expanded;
+    /*-fx-text-fill: #bed7a0;*/
+    -fx-text-fill: orange;
+
+}
+.button{
+    -fx-background-color: orange;
+    -fx-text-fill: white;
+    -fx-font-stretch: ultra-condensed;
+    /*-fx-border: 1px;*/
+    -fx-border-color: white;
+}
