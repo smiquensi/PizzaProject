@@ -147,6 +147,7 @@ public class PrimaryController implements Initializable {
     private void tipo() {
         tipoPizzaElegida = tipoP.getValue();
     }
+    
     private String composicion(){
         String cadena =  "";
         precioMasa = listadoPrecios.get(masaElegida);
@@ -184,68 +185,4 @@ public class PrimaryController implements Initializable {
         
     }
 
-    // Este metodo se tiene que poder acortar para que no se repitan las mismas
-    // sentencias en los dos if. Tal vez pasarle por parmetro el Toogle.getText
-//    @FXML
-//    private boolean tipoMasa(MouseEvent event) {
-//        boolean chek = false;
-//        if (normal.isSelected()) {
-//            precioMasa = listadoPrecios.get(normal.getText());
-//            masaElegida += normal.getText() + " -> " + String.valueOf(precioMasa) + " €";
-//
-//            chek = true;
-//            return chek;
-//        }
-//        if (integral.isSelected()) {
-//            precioMasa = listadoPrecios.get(integral.getText());
-//            masaElegida += integral.getText() + " -> " + precioMasa + " €";
-//
-//            chek = true;
-//            return chek;
-//        }
-//        return chek;
-//    }
-//
-//    @FXML
-//    private void elegirTipoPizza(MouseEvent event) {
-//        precioTipoPizza = listadoPrecios.get(tipoP.getSelectionModel().getSelectedItem());
-//        tipoPizzaElegida += tipoP.getValue() + " -> " + String.valueOf(precioTipoPizza) + " €";
-//
-//    }
-//
-////    @FXML
-////    private void elegirIngredientes(MouseEvent event) {
-////        int posSeleccionado = ingredientesExtra.getSelectionModel().getSelectedIndex();
-////        String ingredienteSeleccionado = ingredientesExtra.getItems().get(posSeleccionado);
-////        precioIngrediente = listadoPrecios.get(ingredienteSeleccionado);
-////        ingredienteElegido += ingredienteSeleccionado + " -> " + String.valueOf(precioIngrediente) + " €";
-////
-////    }
-//
-//    @FXML
-//    private void elegirTamanyo(MouseEvent event) {
-//        precioTamanyo = listadoPrecios.get(tamanyoP.getValue());
-//        tamanyoElegido += tamanyoP.getValue() + " -> " + String.valueOf(precioTamanyo) + " %";
-//
-//    }
-//
-//    // Metodo que recoge las variables y las imprime por pantalla
-//    // Hacer un bucle para mostrar todos los indices del array
-//    private void imprimePedido() {
-//        pedidosImp.add(masaElegida);
-//        pedidosImp.add(tipoPizzaElegida);
-//        pedidosImp.add(ingredienteElegido);
-//        pedidosImp.add(tamanyoElegido);
-//
-//        for (String componentes : pedidosImp) {
-//            PedidoResultado.setText(componentes);
-//        }
-//
-//    }
-//    // metodo para calcular el precio total y mostrarlo por pantalla
-//
-//    @FXML
-//    private void calcularPedido(ActionEvent event) {
-//        imprimePedido();
-//    }
 }
