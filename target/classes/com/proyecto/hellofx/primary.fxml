@@ -77,7 +77,7 @@
                   </GridPane>
                </children>
             </GridPane>
-            <Button fx:id="pedido" layoutX="344.0" layoutY="259.0" mnemonicParsing="false" onAction="#calcularPedido" text="Calcular Precio y Pedido" />
+            <Button fx:id="pedido" layoutX="328.0" layoutY="259.0" mnemonicParsing="false" onAction="#calcularPedido" prefHeight="41.0" prefWidth="245.0" text="Calcular Precio y Pedido" />
             <Pane layoutX="26.0" layoutY="321.0" prefHeight="259.0" prefWidth="858.0">
                <children>
                   <GridPane id="grid2" fx:id="grid2" layoutY="-3.0" prefHeight="259.0" prefWidth="858.0">
