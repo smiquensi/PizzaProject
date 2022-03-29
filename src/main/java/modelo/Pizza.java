@@ -4,6 +4,7 @@
  */
 package modelo;
 
+import com.proyecto.hellofx.PrimaryController;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,19 +17,23 @@ public class Pizza {
     private String masa;
     private String tipo;
     private Set<String> conjuntoIngredientes;
+    private String gratinado;
+    private String bebida;
     private String tamanyo;
     private Precios listaPrecios;
-    private double precioTotal;
+    private Double precioTotal;
 
     public Pizza() {
 
     }
 
-    public Pizza(String masa, String tipo, Set<String> ingredienteExtra, String tamanyo) {
+    public Pizza(String masa, String tipo, Set<String> ingredienteExtra, String tamanyo, String gratinado, String bebida) {
         this.masa = masa;
         this.tipo = tipo;
         this.conjuntoIngredientes = ingredienteExtra;
         this.tamanyo = tamanyo;
+        this.gratinado = gratinado;
+        this.bebida = bebida;
 
     }
 
@@ -40,21 +45,36 @@ public class Pizza {
         this.tipo = tipo;
     }
 
+    public void setGratinado(String gratinado) {
+        this.gratinado = gratinado;
+    }
+
+    public void setBebida(String bebida) {
+        this.bebida = bebida;
+    }
+
     public void setConjuntoIngredientes(Set<String> ingredienteExtra) {
 
         this.conjuntoIngredientes = ingredienteExtra;
     }
 
-    public void limpiaConjuntoIngredientes() {
-        conjuntoIngredientes.clear();
-    }
-
+//    public void limpiaConjuntoIngredientes() {
+//        conjuntoIngredientes.clear();
+//    }
     public void setTamanyo(String tamanyo) {
         this.tamanyo = tamanyo;
     }
 
     public void setPrecios(Precios precios) {
         this.listaPrecios = precios;
+    }
+
+    public String getGratinado() {
+        return gratinado;
+    }
+
+    public String getBebida() {
+        return bebida;
     }
 
     public Precios getPrecios() {
@@ -77,16 +97,19 @@ public class Pizza {
         return conjuntoIngredientes;
     }
 
-    public double getPrecioTotal() {
+    public Double getPrecioTotal() {
         return precioTotal;
     }
 
     public String composicion() {
         String cadena = "";
-        double precioMasa;
-        double precioTipoPizza;
-        double precioIngrediente = 0.;
-        double precioTamanyo;
+        Double precioMasa;
+        Double precioTipoPizza;
+        Double precioIngrediente = 0.;
+        Double precioTamanyo;
+        Double precioBebida = 0.;
+        Double precioGratinado = 0.;
+
         precioMasa = listaPrecios.getPrecio(masa);
         precioTipoPizza = listaPrecios.getPrecio(tipo);
         precioTamanyo = listaPrecios.getPrecio(tamanyo);
@@ -101,11 +124,21 @@ public class Pizza {
             cadena += "INGREDIENTES EXTRA: " + conjuntoIngredientes + " -> " + precioIngrediente + "€";
             cadena += "\n";
         }
-        cadena += "TAMAÑO:  " + tamanyo + " -> " + precioTamanyo + "%";
-        precioTotal = (precioMasa + precioTipoPizza + precioIngrediente);
-        precioTotal += (precioTotal * (precioTamanyo / 100));
+        cadena += "TAMAÑO:  " + tamanyo + " -> " + precioTamanyo + "%\n";
+        if (bebida != null) {
+            precioBebida = listaPrecios.getPrecio(bebida);
+            cadena += "COMPLEMENTOS:  " + bebida + " -> " + precioBebida + "€\n";
+        }
+        if (gratinado != null) {
+            precioGratinado = listaPrecios.getPrecio(gratinado);
+            cadena += "COMPLEMENTOS:  " + gratinado + " -> " + precioGratinado + "%";
+        }
 
+        precioTotal = (precioMasa + precioTipoPizza + precioIngrediente + precioBebida);
+        precioTotal += (precioTotal * (precioTamanyo / 100));
+        precioTotal += (precioTotal * (precioGratinado / 100));
         return cadena;
 
     }
+
 }

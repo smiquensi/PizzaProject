@@ -31,6 +31,9 @@ public class Precios {
         listadoPrecios.put("Normal", 0.00);
         listadoPrecios.put("Mediana", 15.);
         listadoPrecios.put("Familiar", 30.);
+        listadoPrecios.put("Extra gratinado", 2.);
+        listadoPrecios.put("Incluir bebida", 2.);
+        
     }
     public void setProductoPrecio(String producto,Double precio){
         listadoPrecios.put(producto, precio);

@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -33,7 +34,6 @@ public class PrimaryController implements Initializable {
 
     private Pizza pizza1;
     private Precios precios1;
-
 
     private Label etiqueta;
     @FXML
@@ -63,27 +63,33 @@ public class PrimaryController implements Initializable {
     @FXML
     private ComboBox<String> tipoP;
     @FXML
-    private Button pedido;
-    @FXML
     private GridPane grid2;
     @FXML
     private Label pedidoTittle;
     @FXML
-    private Label PedidoResultado;
+    private Label pedidoResultado;
     @FXML
     private Label resultado;
+    @FXML
+    private Label lIngrediente1;
+    @FXML
+    private CheckBox bebida;
+    @FXML
+    private CheckBox gratinado;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         rellenarApp();
+        calcularPedido();
+
     }
 
     private void rellenarApp() {
         pizza1 = new Pizza();
         precios1 = new Precios();
         pizza1.setPrecios(precios1);
-        
+
         normal.setSelected(true);
 
         // Crear la lista visible de Tipos de pizza y darle por defecto la basica
@@ -103,7 +109,6 @@ public class PrimaryController implements Initializable {
                 "Mediana", "Familiar");
         SpinnerValueFactory.ListSpinnerValueFactory<String> tamanyos = new SpinnerValueFactory.ListSpinnerValueFactory(tamanyoPizza);
         tamanyoP.setValueFactory(tamanyos);
-
     }
 
     private void tipoMasa() {
@@ -127,17 +132,44 @@ public class PrimaryController implements Initializable {
     private void tipo() {
         pizza1.setTipo(tipoP.getValue());
     }
-
-    @FXML
-    private void calcularPedido(ActionEvent event) {
+    
+    private void bebida(){       
+        if (bebida.isSelected()) {
+            pizza1.setBebida(bebida.getText());
+        }else{
+            pizza1.setBebida(null);
+        }        
+    }
+    
+    private void gratinado(){         
+        if (gratinado.isSelected()) {
+            pizza1.setGratinado(gratinado.getText());               
+        }else{
+            pizza1.setGratinado(null);
+        }     
+    }
+    
+    private void calcularPedido() {
         tipoMasa();
         ingredientes();
         tamanyo();
         tipo();
-
-        PedidoResultado.setText(pizza1.composicion());
+        bebida();
+        gratinado();        
+        pedidoResultado.setText(pizza1.composicion());
         resultado.setText(String.format("PRECIO TOTAL %.2f€", pizza1.getPrecioTotal()));
+    }
 
+
+
+    @FXML
+    private void eventoMouse(ActionEvent event) {
+        calcularPedido();
+    }
+
+    @FXML
+    private void eventoMouseClick(MouseEvent event) {
+        calcularPedido();
     }
 
 }
